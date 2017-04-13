@@ -76,6 +76,10 @@ public class PositionCheck implements IPostionCheck {
 		public boolean hasNext() {
 			return mCount < 4;
 		}
+		
+		/**
+		 * 这个地方的搜索策略是：北东南西的搜索策略
+		 */
 		@Override
 		public Position next() {
 			int row = mPosition.getRow();

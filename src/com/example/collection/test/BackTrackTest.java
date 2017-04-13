@@ -12,16 +12,16 @@ public class BackTrackTest {
 	public static void main(String[] args) {
 		
 		int[][] map = {
-				{1,1,1,1,0,0},
-				{1,0,0,1,1,0},
-				{1,1,0,0,0,0},
+				{1,1,1,1,1,1},
+				{1,1,0,1,0,0},
+				{1,1,0,1,1,1},
 				{1,1,1,1,1,1}
 		};
 		IPostionCheck postionCheck = new PositionCheck(map);
 		BackTrack backTrack = new BackTrack(postionCheck);
 		//从第一个位置开始回溯
-		backTrack.tryToSolve(new Position(0, 0));
-		
+		boolean result = backTrack.tryToSolve(new Position(0, 0));
+		System.out.println(result);
 		printArray(map);
 	}
 	

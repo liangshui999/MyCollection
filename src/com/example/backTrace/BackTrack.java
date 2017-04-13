@@ -31,23 +31,23 @@ public class BackTrack {
 		while(! success && iterator.hasNext()){
 			//从后面紧挨着它的4个点里面选择一个,第一次循环的时候，肯定是选择最优先的方向,比如是按照上下左右的话，
 			//则第一次是上面的点
-			Position pos = iterator.next();
-			//System.out.println(pos.getRow()+ "," + pos.getColum());
-			if(mApplication.isVaild(pos)){
-				mApplication.record(position);
+			Position nextPos = iterator.next();
+			if(mApplication.isVaild(nextPos)){
+				mApplication.record(position);//把本身标记为能走通
 				//后面紧挨着它的点，正好是目标点
-				if(mApplication.isHit(pos)){
+				if(mApplication.isHit(nextPos)){
 					System.out.println("isHit");
+					mApplication.record(nextPos);
 					success = true;
 				}else{
 					//如果返回true说明后面紧挨着它的点虽然不是目标点，但是后面紧挨着它的点到目标点的路是通的
-					success = tryToSolve(pos);
+					success = tryToSolve(nextPos);
 					if(! success){
 						mApplication.undo(position);
+						mApplication.undo(nextPos);
 					}
 				}
 			}
-			
 		}
 		return success;
 	}	
