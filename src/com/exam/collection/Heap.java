@@ -47,7 +47,7 @@ public class Heap {
 	private void adjustUp() {
 		int childIndex = mSize - 1;
 		int parentIndex = (childIndex - 1) / 2;
-		while(childIndex > 0 && parentIndex > 0){
+		while(childIndex > 0 && parentIndex >= 0){
 			if(compare(mHeap[childIndex], mHeap[parentIndex]) >= 0){
 				break;
 			}
